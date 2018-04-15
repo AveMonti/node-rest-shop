@@ -1,0 +1,22 @@
+{
+  "name": "rest-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattchojnacki/node-rest-shop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattchojnacki/node-rest-shop/issues"
+  },
+  "homepage": "https://github.com/mattchojnacki/node-rest-shop#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
