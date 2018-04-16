@@ -1,5 +1,28 @@
-$ npm init
-$ npm install — save express
+### $ npm init
+### $ npm install -- save express
+### $ npm install -- save-dev nodemon   // restart server everytime when you change something
+* if u wanna use nodemon u mast add on package.json
+
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon server.js"
+  },
+
+  and press comand in your console "npm start"
+
+### $ npm install --save morgan   // login package to use NEXT?
+
+### how to use? :
+
+* go to app.js and add
+const morgan = require('morgan');
+app.use(morgan('dev'));
+
+* now when we are use any request we can see more information like:
+** DELETE /products/123 200 3.315 ms - 28
+** POST /products 201 0.316 ms - 49
+
+
 
 
 ### Get all product
