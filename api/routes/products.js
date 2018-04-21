@@ -4,9 +4,16 @@ const mongoose = require('mongoose');
 const Product = require('../models/product');
 
 router.get('/', (req,res,next) => {
-    res.status(200).json({
-        message: 'Handling GET requests to /products'
-    });
+    Product.find()
+    .exec()
+    .then(docs => {
+        console.log(docs);
+        res.status(200).json(docs);
+})
+    .catch(err => {
+        console.log(err);
+res.status(200).json({error : err});
+});
 });
 
 router.post('/', (req,res,next) => {
@@ -34,30 +41,60 @@ res.status(500).json({
 
 router.get('/:productID',(req,res,next) => {
     const id = req.params.productID;
-    if(id === 'special'){
-        res.status(200).json({
-            message: 'You set special id',
-            id : id
+    Product.findById(id)
+        .exec()
+        .then( doc => {
+            console.log("From database", doc);
+            if (doc){
+                res.status(200).json(doc);
+            }else{
+                res.status(400).json({message: "No valid entry found"});
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error: err});
         });
-    }else{
-        res.status(200).json({
-           message : 'other id'
-        });
-    }
+
 });
 
 
 router.patch('/:productID',(req,res,next) => {
-    res.status(200).json({
-        message : 'Update product'
+    const id = req.params.productID;
+    const updateOps = {};
+    for (const ops of req.body){
+        updateOps[ops.propName] = ops.value;
+    }
+
+    Product.update({_id: id},{ $set: updateOps})
+        .exec()
+        .then(result =>{
+            console.log(result);
+            res.status(200).json(result);
+
+    })
+        .catch(err => {
+    console.log(err);
+    res.status(500).json({
+        error : err
     });
+});
 });
 
 router.delete('/:productID',(req,res,next) => {
+    const id = req.params.productID;
+    Product.remove({_id: id})
+        .exec()
+        .then(result => {
+            res.status(200).json(result);
+    })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+            error : err
+            });
+        });
+});
 
-    res.status(200).json({
-    message : 'Delete product'
-});
-});
 
 module.exports = router;

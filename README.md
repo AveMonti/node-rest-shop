@@ -58,6 +58,10 @@ router.post('/', (req,res,next) => {
 ### Patch product with id 123
 * PATCH
 * http://localhost:3000/products/123
+[
+	{"propName": "name", "value": "Hello"}
+]
+
 
 ### Delete product with id 123
 * DELETE
@@ -68,8 +72,6 @@ router.post('/', (req,res,next) => {
 * http://localhost:3000/products/
 
 
-// local
-mongod --port 27019 --dbpath workspace/web/node-rest-shop/data/db/
-
-
-//https://cloud.mongodb.com/v2/5ad64e9f4e6581320cf43758#clusters?tooltip=nds.connect&step=0
+## Start on local server:
+* $ mongod --port 27020 --dbpath workspace/web/node-rest-shop/data/db/
+* $ npm start
