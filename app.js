@@ -2,8 +2,18 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const mongoose = require('mongoose');
+
+
+mongoose.connect(
+    "mongodb://localhost:27020",
+    {
+        useMongoClient: true
+    }
+);
 
 
 app.use(morgan('dev'));

@@ -42,6 +42,7 @@ router.post('/', (req,res,next) => {
 });
 
 
+### npm install mongoose
 
 
 
@@ -65,3 +66,10 @@ router.post('/', (req,res,next) => {
 ### Set id
 * POST
 * http://localhost:3000/products/
+
+
+// local
+mongod --port 27019 --dbpath workspace/web/node-rest-shop/data/db/
+
+
+//https://cloud.mongodb.com/v2/5ad64e9f4e6581320cf43758#clusters?tooltip=nds.connect&step=0
