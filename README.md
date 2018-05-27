@@ -44,8 +44,6 @@ router.post('/', (req,res,next) => {
 
 ### npm install mongoose
 
-
-
 ### Get all product
 * GET
 * http://localhost:3000/products/
